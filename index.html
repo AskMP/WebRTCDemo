@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link href="./style.css" rel="stylesheet" />
+        <script src="/socket.io/socket.io.js"></script>
+    </head>
+    <body>
+        <header>
+            <h1>WebRTC Broadcaster</h1>
+            <div id="roomInfo">
+                <input type="text" placeholder="name" value="" id="username" />
+                <input type="text" placeholder="room" value="" id="room" />
+                <button id="join">Join</button>
+            </div>
+        </header>
+        <main>
+            <aside>
+                <header>
+                    <h2>Chat</h2>
+                </header>
+                <section>
+                    <div id="chatArea">
+                    </div>
+                    <div id="chatInput">
+                        <textarea rows="4" disabled></textarea>
+                    </div>
+                </section>
+            </aside>
+            <article>
+                <header>
+                    <div id="participantType">
+                        <label>
+                            Viewer
+                            <input type="radio" name="participantType" value="viewer" checked/>
+                        </label>
+                        <label>
+                            Broadcaster
+                            <input type="radio" name="participantType" value="broadcaster" />
+                        </label>
+                    </div>
+                    <div id="broadcastTools" class="">
+                        <select id="deviceList"></select>
+                        <button id="toggle">Broadcast</button>
+                    </div>
+                </header>
+                <div class="videoContainer">
+                    <video id="previewWindow" autoplay controls></video>
+                </div>
+            </article>
+        </main>
+        <script src="./app.js" type="module"></script>
+    </body>
+</html>
