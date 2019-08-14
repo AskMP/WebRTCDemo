@@ -65,7 +65,7 @@ class WebRTCDemoServer {
         }
         let member = {
             name : username,
-            connection : connection.id.substr(2)
+            connection : connection.id
         };
         this.rooms[roomName].members.push(member);
         this.io.to(roomName).emit('userJoin', member.name);
@@ -80,7 +80,7 @@ class WebRTCDemoServer {
 
     removeFromRoom(roomName, connection) {
         if (!this.rooms[roomName]) return;
-        let member = this.rooms[roomName].members.find(m => m.connection === connection.id.substr(2));
+        let member = this.rooms[roomName].members.find(m => m.connection === connection.id);
         if (!member) return;
         connection.leave(roomName);
         this.io.to(roomName).emit('userLeft', member.name);
